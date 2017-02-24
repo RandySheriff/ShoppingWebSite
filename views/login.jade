@@ -1,0 +1,23 @@
+extends layout
+
+block list
+
+block content
+   h2= prompt
+   form(name="login", method="post", action="/admin")
+        table
+            tr
+                td
+                    管理员名称：
+                td
+                   input(class="ui-widget", type="text", name="管理员名称")
+            tr
+                td
+                    管理员密码：
+                td
+                   input(class="ui-widget", type="password", name="管理员密码")
+            tr
+                td
+                    input(class="ui-button", type="reset", value="重置")
+                td
+                    input(class="ui-button", type="submit", value="登录")

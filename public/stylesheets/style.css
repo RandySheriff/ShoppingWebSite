@@ -1,0 +1,44 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+a {
+  color: #00b7ff;
+}
+.floatLeft {
+  float: left;
+  display: inline;
+  padding-top: 30px;
+  padding-right: 50px;
+}
+.caption {
+  height: 70px;
+  color: #fff;
+  padding-top: 1px;
+  padding-left: 15px;
+  background-color: #f5a9a9;
+}
+.tableHeader {
+  color: #fff;
+  padding-left: 20px;
+  padding-right: 20px;
+  background-color: #f5a9a9;
+}
+.trOdd {
+  background-color: #bdbdbd;
+}
+.tdOdd {
+  color: #f5f6ce;
+  padding-left: 20px;
+  padding-right: 20px;
+  text-align: center;
+}
+.tdEven {
+  color: #819ff7;
+  padding-left: 20px;
+  padding-right: 20px;
+  text-align: center;
+}
+.listPadding {
+  padding-bottom: 20px;
+}

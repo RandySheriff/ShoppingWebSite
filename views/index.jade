@@ -1,0 +1,60 @@
+extends layout
+
+block content
+    h1 订单查询
+    script(src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js")
+    script(src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js")
+    script(src="/javascripts/index.js")
+    form(method="post", action="/query")
+        table
+            - if (isAdmin == 'yes')
+                tr
+                    td
+                        label 订单号
+                    td
+                        input(class="ui-widget", type="text", name="订单号", value=订单号)
+            tr
+                td
+                    label QQ
+                td
+                    - if (isAdmin == 'yes')
+                    
+                        input(class="ui-widget", type="text", name="QQ", value=QQ)
+                        
+                    - else
+                    
+                        input(class="ui-widget", type="text", name="QQ", placeholder="QQ号不能为空", value=QQ)
+                        
+            - if (isAdmin == 'yes')
+                tr
+                    td
+                        label 商品名称
+                    td
+                        input(class="ui-widget", type="text", name="商品名称", value=商品名称)
+            tr
+                td
+                    label 订单状态
+                td
+                    input(class="ui-widget", type="hidden", name="status", value=订单状态)
+                    select(class="ui-widget", name="订单状态")
+                        option(value='')
+                        option(value='未付款') 未付款
+                        option(value='已付款') 已付款
+                        option(value='已发货') 已发货
+                        option(value='已取消') 已取消
+                        option(value='已结单') 已结单
+            tr
+                td
+                    label 起始日期
+                td
+                    input(class="ui-widget", type="text", name="起始日期", value=起始日期)
+            tr
+                td
+                    label 截至日期
+                td
+                    input(class="ui-widget", type="text", name="截止日期", value=截止日期)
+            tr
+                td
+                    input(class="ui-button", type="reset", value="重置")
+                td
+                    input(class="ui-button", type="submit", value="查询")

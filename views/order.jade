@@ -1,0 +1,23 @@
+extends index
+
+block list
+    - if (rows.length == 0)
+        h2 0 条记录
+    - else
+        - {var all = allCost}
+        h2　总计：　#{all}
+        table
+          tr
+            - each val,key in rows[0]
+                th.tableHeader= key
+          - { var rowIndex = 0}
+          - each row in rows
+            - if ( rowIndex % 2 == 1)
+                tr.trOdd
+                    - each val in row
+                        td.tdOdd= val
+            - else
+                tr
+                    - each val in row
+                        td.tdEven= val    
+            - {rowIndex = rowIndex + 1}

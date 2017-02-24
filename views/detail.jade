@@ -1,0 +1,39 @@
+extends layout
+
+block content
+block list
+    script(src="/javascripts/jquery-3.1.1.min.js")
+    script(src="/javascripts/detail.js")
+    a(href='/list?table=' + table)
+        =caption
+    - {var i = 0}
+    form(name="listdetail", method="post", action="/" + operation)
+        table
+            - each val, key in row
+                tr
+                    td
+                        label= key
+                    td
+                        - if ( i == 0)
+                            - if (val == '')
+                                input(class="ui-widget", type="text", name=key)
+                            - else
+                                input(class="ui-widget", type="text", value=val, disabled=true)
+                                input(type="hidden", name=key, value=val)
+                        - else
+                            - if (operation == 'new' && val != '')
+                                - if (typeof val == 'string')
+                                    input(class="ui-widget", type="text", value=val, disabled=true)
+                                    input(type="hidden", name=key, value=val)
+                                -else
+                                    select(class="ui-widget", name=key)
+                                        - for (var idx in val)
+                                            option(value=val[idx])= val[idx]
+                            - else
+                                    input(class="ui-widget", type="text", name=key value=val)
+                -{i = i + 1}
+        tr
+            td
+            td
+                input(class="ui-button", type="hidden", name="table", value=table)
+                input(class="ui-button", type="submit", value=button)

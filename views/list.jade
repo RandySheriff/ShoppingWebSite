@@ -1,0 +1,55 @@
+extends admin
+
+block list
+    - if (addItem != '')
+        a(href='/detail?table=' + table + '&operation=new')=addItem
+    - if (rows.length == 0)
+        h2 0 条记录
+    - else
+        table
+          tr
+            - each val,key in rows[0]
+                th.tableHeader= key
+                
+            - if (enableEdit == 'yes')
+                th.tableHeader 编辑
+            
+            - if (enableRemove == 'yes')
+                th.tableHeader 删除
+                
+          - { var rowIndex = 0}
+          - each row in rows
+            - if ( rowIndex % 2 == 1)
+                tr.trOdd
+                    - each val in row
+                        td.tdOdd= val
+                    
+                    - if (enableEdit == 'yes')
+                        td.tdOdd
+                            - each val in row
+                                a(href='/detail?table=' + table + '&operation=edit&id=' + val) 编辑
+                                - break
+                        
+                    - if (enableRemove == 'yes')
+                        td.tdOdd
+                            - each val in row
+                                a(href='/list?table=' + table + '&operation=delete&id=' + val) 删除
+                                - break
+            - else
+                tr
+                    - each val in row
+                        td.tdEven= val
+                        
+                    - if (enableEdit == 'yes')
+                        td.tdEven
+                            - each val in row
+                                a(href='/detail?table=' + table + '&operation=edit&id=' + val) 编辑
+                                - break
+
+                    - if (enableRemove == 'yes')
+                        td.tdEven
+                            - each val in row
+                                a(href='/list?table=' + table + '&operation=delete&id=' + val) 删除
+                                - break
+                    
+            - {rowIndex = rowIndex + 1}
